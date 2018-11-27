@@ -170,11 +170,8 @@ func VerifyCaptchaAndIsClear(identifier, verifyValue string,isClear bool) bool {
 //	idKeyD,capD := base64Captcha.GenerateCaptcha("",configD)
 //	//write to base64 string.
 //	base64stringD := base64Captcha.CaptchaWriteToBase64Encoding(capD)
-func GenerateCaptcha(idKey string, configuration interface{}) (id string, captchaInstance CaptchaInterface) {
-	if idKey == "" {
-		idKey = randomId()
-	}
-	id = idKey
+func GenerateCaptcha(configuration interface{}) (v string, captchaInstance CaptchaInterface) {
+	idKey := randomId()
 	var verifyValue string
 	switch config := configuration.(type) {
 	case ConfigAudio:
@@ -195,8 +192,6 @@ func GenerateCaptcha(idKey string, configuration interface{}) (id string, captch
 	default:
 		log.Fatal("config type not supported", config)
 	}
-
-	globalStore.Set(idKey, verifyValue)
-
-	return idKey, captchaInstance
+	
+	return verifyValue, captchaInstance
 }
