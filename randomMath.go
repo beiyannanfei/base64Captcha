@@ -27,8 +27,8 @@ func randArithmetic() (question, result string) {
 	r := randSeed()
 	switch operators[r.Int31n(3)] {
 	case "+":
-		a := r.Int31n(100)
-		b := r.Int31n(100)
+		a := r.Int31n(10)
+		b := r.Int31n(10)
 		question = fmt.Sprintf("%d+%d=?", a, b)
 		mathResult = a + b
 	case "x":
@@ -37,8 +37,8 @@ func randArithmetic() (question, result string) {
 		question = fmt.Sprintf("%dx%d=?", a, b)
 		mathResult = a * b
 	default:
-		a := r.Int31n(100)
-		b := r.Int31n(100)
+		a := r.Int31n(10)
+		b := r.Int31n(10)
 		if a > b {
 			question = fmt.Sprintf("%d-%d=?", a, b)
 			mathResult = a - b
